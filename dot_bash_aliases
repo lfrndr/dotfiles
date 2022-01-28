@@ -7,7 +7,7 @@ alias gs="git status"
 alias gcm="git commit -m"
 alias gau="git add -u"
 
-alias clc="fc -ln -1 | sed --expression='s/^\t //g' | clip.exe" # send last command to clipboard
+alias clc="fc -ln -1 | sed --expression='s/^\t //g' | clip.exe" # send last command to clipboard on WSL
 alias hist="history"
 alias hgr="history | grep"
 alias hgrep="history | grep"
@@ -24,7 +24,7 @@ alias stopg4="aws ec2 stop-instances --instance-ids i-098658594dae2f294"
 alias stopc4="aws ec2 stop-instances --instance-ids i-0f2f465a99b889ecf"
 
 
-mkcdir ()
+mcd ()
 {
     mkdir -p -- "$1" &&
       cd -P -- "$1"
