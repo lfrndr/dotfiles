@@ -1,35 +1,33 @@
-## aliases ##
+# yet another ls alias
 
-#alias python3=/usr/bin/python3.8
-alias npp="source ~/new_python_project.sh"
+alias ll='ls -alFh'
+alias rr='rm -rf'
+
+alias byebye="sudo shutdown 0"
+
+# git stuff
 
 alias gs="git status"
 alias gcm="git commit -m"
 alias gau="git add -u"
 
-alias clc="fc -ln -1 | sed --expression='s/^\t //g' | clip.exe" # send last command to clipboard on WSL
-alias hist="history"
-alias hgr="history | grep"
-alias hgrep="history | grep"
-alias cls="clear"
-alias editbashrc="nano ~/.bashrc"
-alias sourcebashrc="source ~/.bashrc"
+# aws ec2 stuff
 
-alias byebye="sudo shutdown 0"
-alias startt3="aws ec2 start-instances --instance-ids i-0ab8918b7bb03f202" # T3.large
-alias startg4="aws ec2 start-instances --instance-ids i-098658594dae2f294" # GPU one
-alias startc4="aws ec2 start-instances --instance-ids i-0f2f465a99b889ecf" # GPU one
-alias stoptt3="aws ec2 stop-instances --instance-ids i-0ab8918b7bb03f202"
-alias stopg4="aws ec2 stop-instances --instance-ids i-098658594dae2f294"
-alias stopc4="aws ec2 stop-instances --instance-ids i-0f2f465a99b889ecf"
+alias start-instances="aws ec2 start-instances --instance-ids"
+alias stop-instances="aws ec2 stop-instances --instance-ids"
 
+alias whoisup="aws ec2 describe-instances --filters 'Name=tag:Name,Values=AA_*' 'Name=instance-state-name,Values=running' --output text --query 'Reservations[*].Instances[*].Tags[*].Value'"
 
-mcd ()
-{
-    mkdir -p -- "$1" &&
-      cd -P -- "$1"
-}
+export AA_prep_t3="i-0ab8918b7bb03f202"
+export AA_prep_t3_2="i-04497910200f4c22a"
+export AA_prep_t3_2x="i-0b62797dc55f3945a"
+export AA_prep_t3_2x_2="i-0edbedcd6361e0f0b"
+export AA_c4="i-0f2f465a99b889ecf"
+export AA_G4="i-098658594dae2f294"
+export AA_G4_2="i-0d026ab4187eb8af5"
 
-# to send notifications to windows
-export PATH=/mnt/c/Users/aalfieri/wsl-notify-send_windows_386${PATH:+:${PATH}}
-wsl-notify() { wsl-notify-send.exe --category $WSL_DISTRO_NAME "${@}"; }
+# WSL stuff
+# alias clc="fc -ln -1 | sed --expression='s/^\t //g' | clip.exe" # send last command to clipboard on WSL
+# export PATH=/mnt/c/Users/aalfieri/wsl-notify-send_windows_386${PATH:+:${PATH}}
+# wsl-notify() { wsl-notify-send.exe --category $WSL_DISTRO_NAME "${@}"; }
+
