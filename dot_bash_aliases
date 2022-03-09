@@ -24,7 +24,7 @@ export AA_prep_t3_2x="i-0b62797dc55f3945a"
 export AA_prep_t3_2x_2="i-0edbedcd6361e0f0b"
 export AA_c4="i-0f2f465a99b889ecf"
 export AA_G4="i-098658594dae2f294"
-export AA_G4_2="i-053ea3b79e0932592"
+export AA_G4_2="i-0874b3a606377aa80"
 
 # WSL stuff
 # alias clc="fc -ln -1 | sed --expression='s/^\t //g' | clip.exe" # send last command to clipboard on WSL
