@@ -18,8 +18,7 @@ alias stop-instances="aws ec2 stop-instances --instance-ids"
 
 alias whoisup="aws ec2 describe-instances --filters 'Name=tag:Name,Values=AA_*' 'Name=instance-state-name,Values=running' --output text --query 'Reservations[*].Instances[*].Tags[*].Value'"
 
-export AA_prep_t3="i-0ab8918b7bb03f202"
-export AA_prep_t3_2="i-04497910200f4c22a"
+export AA_prep_t3="i-04497910200f4c22a"
 export AA_prep_t3_2x="i-0b62797dc55f3945a"
 export AA_prep_t3_2x_2="i-0edbedcd6361e0f0b"
 export AA_c4="i-0f2f465a99b889ecf"
