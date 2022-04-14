@@ -21,7 +21,7 @@ alias whoisup="aws ec2 describe-instances --filters 'Name=tag:Name,Values=AA_*' 
 export AA_prep_t3="i-04497910200f4c22a"
 export AA_prep_t3_2x="i-0b62797dc55f3945a"
 export AA_prep_t3_2x_2="i-0edbedcd6361e0f0b"
-export AA_c4="i-0f2f465a99b889ecf"
+export AA_c4="i-045fd4e60039ff5ea"
 export AA_G4="i-098658594dae2f294"
 export AA_G4_2="i-07fcc465c0ba41ec5"
 
