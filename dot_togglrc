@@ -1,0 +1,11 @@
+[version]
+version = 2.4.4
+
+[logging]
+file_logging = True
+file_logging_path = /home/aalfieri/.toggl_log
+
+[options]
+theme = plain
+default_wid = 7357810
+

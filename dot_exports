@@ -1,0 +1,6 @@
+# local WSL todo folder
+export TODODIR=/mnt/c/vault/todo/
+
+# DonLimpio datarepo stuff
+export DL_DATAREPO_BUCKET_NAME=datarepo-test
+export DL_DATAREPO_NAME=datarepo-test

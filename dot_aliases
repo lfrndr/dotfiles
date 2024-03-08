@@ -1,0 +1,29 @@
+# prevent being stupid
+alias rm='rm -i'
+
+alias more='less'
+
+# yet another ls alias
+alias ll='ls -alFh'
+
+alias byebye="sudo shutdown 0"
+
+# git stuff
+alias gs="git status"
+alias gcm="git commit -m"
+alias gau="git add -u"
+alias gb="git branch"
+alias gc="git checkout"
+
+# aws ec2
+
+alias start-instances="aws ec2 start-instances --instance-ids"
+alias stop-instances="aws ec2 stop-instances --instance-ids"
+alias whoisup="aws ec2 describe-instances --filters 'Name=tag:Name,Values=aalfieri*' 'Name=instance-state-name,Values=running' --output text --query 'Reservations[*].Instances[*].Tags[*].Value'"
+
+# jira cli
+alias jira-list-open='jira issue list -a$(jira me) --columns "TYPE,KEY,SUMMARY,STATUS,CREATED" -q "project IS NOT EMPTY" -s~Closed'
+
+# toggl/tper
+alias pt="pter"
+alias t="toggl"

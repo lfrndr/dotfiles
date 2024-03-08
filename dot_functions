@@ -1,0 +1,41 @@
+function mcd() {
+    mkdir -p -- "$1" &&
+        cd -P -- "$1"
+}
+
+function hgrep() { history | grep -i "$1"; }
+
+function cl() {
+    DIR="$*"
+    # if no DIR given, go home
+    if [ $# -lt 1 ]; then
+        DIR=$HOME
+    fi
+    builtin cd "${DIR}" &&
+        # use your preferred ls command
+        # ls -F --color=auto
+        ls -alFh --color=auto
+}
+
+# ssh stuff
+
+add-agent () { eval $(ssh-agent -s) && ssh-add ;}
+
+
+convert-kb() {
+    local kb="$1"
+
+    if ((kb >= 1024 * 1024)); then
+        printf "%.2f GB\n" "$(bc -l <<<"$kb / (1000*1000)")"
+    elif ((kb >= 1024)); then
+        printf "%.2f MB\n" "$(bc -l <<<"$kb / 1000")"
+    else
+        echo "${kb} KB"
+    fi
+}
+
+
+fmt-number() {
+     local num="$1"
+     python3 -c "print(f'{$num:,}')"
+}
