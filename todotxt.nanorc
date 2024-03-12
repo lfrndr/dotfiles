@@ -1,0 +1,26 @@
+syntax "todo.txt" "\todo.txt"
+
+# color brigthwhite "[A-Za-z0-9_]+"
+
+## priorities
+color brightred "^\(A\)"
+color brightyellow "^\(B\)"
+color brightcyan "^\(C\)"
+
+## creation dates
+color gray "[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]"
+## projects
+color cyan "\+(\w+)"
+## contexts
+color brightgreen "@(\w+)"
+## due dates
+color brightred "due:[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]"
+## threshold dates
+color yellow "t:[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]"
+## rec: tags
+color brightmagenta "rec:(\w+)"
+
+#color red start="\bx\b" end="$"
+#color yellow start="\b(A)\b" end="$"
+#color green start="\b(B)\b" end="$"
+#color blue start="\b(C)\b" end="$"
