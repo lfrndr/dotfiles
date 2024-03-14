@@ -26,4 +26,6 @@ alias jira-list-open='jira issue list -a$(jira me) --columns "TYPE,KEY,SUMMARY,S
 
 # toggl/tper
 alias pt="pter"
+alias tp="pter"
+alias tper="pter"
 alias t="toggl"
