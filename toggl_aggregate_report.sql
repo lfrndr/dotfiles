@@ -1,0 +1,3 @@
+-- select sum(hours_spent) / hours_spent from (SELECT round(SUM(epoch(DURATION)) / 3600, 2) AS hours_spent, Description AS project FROM read_csv_auto('/dev/stdin', delim = '\t', header = TRUE, COLUMNS = { 'Description': 'VARCHAR','Duration': 'INTERVAL','Start': 'VARCHAR','Stop': 'VARCHAR' }) GROUP BY project ORDER BY hours_spent DESC);
+with cte as (SELECT round(SUM(epoch(DURATION)) / 3600, 2) AS hours_spent, Description AS project FROM read_csv_auto('/dev/stdin', delim = '\t', header = TRUE, COLUMNS = { 'Description': 'VARCHAR','Duration': 'INTERVAL','Start': 'VARCHAR','Stop': 'VARCHAR' }) GROUP BY project ORDER BY hours_spent DESC) select * from cte t;
+-- https://stackoverflow.com/questions/71297931/percentage-based-on-another-column-with-group-by
