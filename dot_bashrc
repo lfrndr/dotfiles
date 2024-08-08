@@ -123,7 +123,8 @@ HISTTIMEFORMAT="[%F %T %Z] "
 # Append, clear, and read history after each command
 PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 # Ignore duplicate commands, and commands that start with spaces
-HISTCONTROL='ignoreboth'
+HISTCONTROL=ignorespace:erasedups  # Ignore commands that start with a space
+HISTIGNORE="ls:cd"       # Ignore some common commands
 
 # Show git branch name in the prompt, from https://askubuntu.com/a/946716
 force_color_prompt=yes
