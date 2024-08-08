@@ -1,0 +1,48 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = false
+command_timeout = 1000
+
+[line_break]
+disabled = false # separate prompt into 2 lines
+
+[username]
+disabled = true
+# show_always = true
+style_user = 'bold green'
+format = '[$user@]($style)'
+
+[hostname]
+ssh_only = false
+style = 'bold green'
+format = '[$hostname]($style) '
+disabled = false
+
+[directory]
+truncation_length = 100
+truncate_to_repo = false
+style = 'bold blue'
+
+[memory_usage]
+disabled = false
+threshold = 50
+
+[git_branch]
+style = "yellow"
+format = '[$branch(:$remote_branch)]($style) '
+#format = '[$symbol$branch(:$remote_branch)]($style) '
+# symbol = '🌱 '
+
+[python]
+style = "white"
+format = '[(\($virtualenv\))]($style) '
+
+[character]
+disabled = false
+# success_symbol = "[•](green)" 
+# error_symbol = "[•](bold red) "
+
+[aws]
+disabled = true
+format = 'on [$symbol($profile )(\($region\) )(\[$duration\] )]($style)'
