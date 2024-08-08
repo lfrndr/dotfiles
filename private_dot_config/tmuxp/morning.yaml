@@ -1,11 +1,10 @@
 session_name: morning
 windows:
-  - window_name: main
+  - window_name: morning
     layout: 60ef,270x71,0,0[270x17,0,0{134x17,0,0,1,135x17,135,0,2},270x23,0,18{134x23,0,18,3,135x23,135,18,4},270x29,0,42{134x29,0,42,5,135x29,135,42,6}]
     options: {}
-    focus: "true"
-    shell_command_before:
-      - cd $TODODIR/.. # run as a first command in all panes
+    focus: true
+    start_directory: /mnt/c/vault
     panes:
       - jira-done
       - null
@@ -13,4 +12,3 @@ windows:
       - null
       - tper
       - pane
-    # start_directory: /mnt/c/vault
