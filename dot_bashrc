@@ -157,3 +157,6 @@ export PIP_REQUIRE_VIRTUALENV=true
 
 # start starship prompt if installed
 [[ -x $(command -v starship) ]] && eval "$(starship init bash)"
+
+[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
+eval "$(atuin init bash --disable-up-arrow)"

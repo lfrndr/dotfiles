@@ -22,7 +22,8 @@ alias stop-instances="aws ec2 stop-instances --instance-ids"
 alias whoisup="aws ec2 describe-instances --filters 'Name=tag:Name,Values=aalfieri*' 'Name=instance-state-name,Values=running' --output text --query 'Reservations[*].Instances[*].Tags[*].Value'"
 
 # jira cli
-alias jira-list-open='jira issue list -a$(jira me) --columns "TYPE,KEY,SUMMARY,STATUS,CREATED" -q "project IS NOT EMPTY" -s~Closed'
+alias jira-todo='jira issue list --assignee aalfieri@rws.com --columns "KEY,SUMMARY,STATUS,CREATED" --jql "project IS NOT EMPTY" -s~Closed'
+alias jira-done='jira issue list --assignee aalfieri@rws.com --columns "KEY,SUMMARY,CREATED,UPDATED" --jql "project IS NOT EMPTY AND resolved >= -60d" -s Closed --order-by UPDATED'
 
 # toggl/tper
 alias pt="pter"
