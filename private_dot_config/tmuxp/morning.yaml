@@ -9,6 +9,6 @@ windows:
       - jira-done
       - null
       - jira-todo
-      - null
+      - toggl add 'now' 2s check-in --project admin && echo $(date +"checked in at %H:%M. it's %A %d %B today").
       - tper
-      - pane
+      - null
