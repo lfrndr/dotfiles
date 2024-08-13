@@ -29,4 +29,6 @@ alias jira-done='jira issue list --assignee aalfieri@rws.com --columns "KEY,SUMM
 alias pt="pter"
 alias tp="pter"
 alias tper="pter"
+
 alias t="toggl"
+alias t-checkin="toggl add 'now' 2s check-in --project admin"
