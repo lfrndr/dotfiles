@@ -19,8 +19,7 @@ function cl() {
 
 # ssh stuff
 
-add-agent () { eval $(ssh-agent -s) && ssh-add ;}
-
+add-agent() { eval $(ssh-agent -s) && ssh-add; }
 
 convert-kb() {
     local kb="$1"
@@ -34,8 +33,56 @@ convert-kb() {
     fi
 }
 
-
 fmt-number() {
-     local num="$1"
-     python3 -c "print(f'{$num:,}')"
+    local num="$1"
+    python3 -c "print(f'{$num:,}')"
+}
+
+monitor-pid-memory() {
+    if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ]; then
+        echo "Usage: monitor-pid-memory <PID> <log_file_path> <sleep_time_in_seconds>"
+        return 1
+    fi
+
+    PID=$1
+    LOGFILE=$2
+    SLEEP_TIME=$3
+
+    # Check if the PID exists
+    if ! ps -p $PID >/dev/null 2>&1; then
+        echo "Process with PID $PID does not exist."
+        return 1
+    fi
+
+    # Get the directory of the log file
+    LOGDIR=$(dirname "$LOGFILE")
+
+    # Create the directory if it doesn't exist
+    if [ ! -d "$LOGDIR" ]; then
+        mkdir -p "$LOGDIR"
+    fi
+
+    # Get total RAM in kB
+    TOTAL_RAM=$(grep MemTotal /proc/meminfo | awk '{print $2}')
+
+    echo "Logging memory usage of PID $PID to $LOGFILE and stdout every $SLEEP_TIME seconds"
+
+    while ps -p $PID >/dev/null 2>&1; do
+        # Get the memory used by the process in kB
+        MEM_USAGE=$(pmap -x $PID | awk '/total/ {print $3}')
+
+        # Calculate memory usage as a percentage of total RAM
+        MEM_PERCENT=$(echo "scale=2; $MEM_USAGE*100/$TOTAL_RAM" | bc)
+
+        # Get the current timestamp
+        TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
+
+        # Log the information to the file
+        echo "$TIMESTAMP - PID $PID: $MEM_USAGE kB ($MEM_PERCENT% of total RAM)" | tee -a $LOGFILE
+
+        # Wait for the specified sleep time before checking again
+        sleep $SLEEP_TIME
+    done
+
+    echo "$TIMESTAMP - Process with PID $PID has terminated."
 }
