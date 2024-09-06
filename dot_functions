@@ -38,6 +38,13 @@ fmt-number() {
     python3 -c "print(f'{$num:,}')"
 }
 
+set-vscode-ipc-hook() {
+    socket=$(ls -1t /run/user/$UID/vscode-ipc-*.sock 2> /dev/null | head -1)
+    export VSCODE_IPC_HOOK_CLI=${socket}
+}
+
+
+
 monitor-pid-memory() {
     if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ]; then
         echo "Usage: monitor-pid-memory <PID> <log_file_path> <sleep_time_in_seconds>"
