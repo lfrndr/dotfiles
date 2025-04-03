@@ -86,7 +86,7 @@ monitor-pid-memory() {
         echo "$TIMESTAMP - PID $PID: $MEM_USAGE kB ($MEM_PERCENT% of total RAM)" | tee -a $LOGFILE
 
         # Wait for the specified sleep time before checking again
-        sleep $SLEEP_TIME
+        sleep "$SLEEP_TIME"
     done
 
     echo "$TIMESTAMP - Process with PID $PID has terminated."
@@ -96,5 +96,17 @@ jira-check-parents() {
     issues=$(jira issue list --assignee "$(jira me)" --columns "KEY" --jql "project IS NOT EMPTY" -s ~Closed -s ~Backlog --plain --no-headers)
     for issue in $issues; do
         jira issue view --raw "$issue" | jq -c '[.fields.status.name, .key, .fields.summary, .fields.parent.key, .fields.parent.fields.summary]'
+    done
+}
+
+jira-add-parent() {
+    if [ $# -eq 0 ]; then
+        echo "Usage: jira-add-parent <parent_issue_key> <issue_keys>"
+        return 1
+    fi
+    # get all arguments after the first one
+    issues=("${@:2}")
+    for key in "${issues[@]}"; do
+        jira issue edit "$key" --parent "$1" --no-input
     done
 }
